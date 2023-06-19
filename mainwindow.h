@@ -21,6 +21,9 @@ private slots:
 
     void on_btnTerminar_clicked();
 
+signals:
+
+
 private:
     Ui::MainWindow *ui;
     Cliente m_cliente;

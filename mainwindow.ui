@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>372</height>
+    <width>678</width>
+    <height>415</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Datos del Cliente</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="lblTCiudad">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>150</y>
+      <y>200</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>70</y>
+      <y>120</y>
       <width>141</width>
       <height>25</height>
      </rect>
@@ -41,7 +41,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>200</y>
+      <y>250</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -60,14 +60,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>Nombre completo:</string>
+     <string>Nombres:</string>
     </property>
    </widget>
    <widget class="QLabel" name="lblTCorreo">
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>250</y>
+      <y>300</y>
       <width>141</width>
       <height>17</height>
      </rect>
@@ -80,7 +80,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>100</y>
+      <y>150</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -93,7 +93,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>120</y>
+      <y>170</y>
       <width>291</width>
       <height>25</height>
      </rect>
@@ -103,7 +103,7 @@
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>300</y>
+      <y>350</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -116,7 +116,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>270</y>
+      <y>320</y>
       <width>291</width>
       <height>25</height>
      </rect>
@@ -126,9 +126,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>20</y>
       <width>321</width>
-      <height>301</height>
+      <height>331</height>
      </rect>
     </property>
    </widget>
@@ -136,7 +136,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>50</y>
+      <y>100</y>
       <width>67</width>
       <height>17</height>
      </rect>
@@ -149,9 +149,9 @@
     <property name="geometry">
      <rect>
       <x>340</x>
-      <y>130</y>
-      <width>21</width>
-      <height>25</height>
+      <y>150</y>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -162,7 +162,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>170</y>
+      <y>220</y>
       <width>141</width>
       <height>25</height>
      </rect>
@@ -172,7 +172,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>220</y>
+      <y>270</y>
       <width>141</width>
       <height>25</height>
      </rect>
@@ -188,13 +188,55 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="lblTNombre_2">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>50</y>
+      <width>141</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Apellidos:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txtNombre_2">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>70</y>
+      <width>291</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTAyuda">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>321</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="text">
+     <string>COPIE Y PEGUE LOS DATOS AQUI</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>681</width>
+     <width>678</width>
      <height>23</height>
     </rect>
    </property>
