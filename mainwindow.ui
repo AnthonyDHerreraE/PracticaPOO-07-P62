@@ -230,6 +230,19 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>360</y>
+      <width>321</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Lista de clientes</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -237,7 +250,7 @@
      <x>0</x>
      <y>0</y>
      <width>678</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

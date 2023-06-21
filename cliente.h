@@ -17,6 +17,12 @@ public:
     const QString &correo() const;
 
 
+    QString nombres() const;
+    void setNombres(const QString &newNombres);
+
+    QString apellidos() const;
+    void setApellidos(const QString &newApellidos);
+
 public slots:
     void setNombre(const QString &newNombre);
     void setCedula(const QString &newCedula);
@@ -33,6 +39,8 @@ signals:
 
 private:
     QString m_nombre;
+    QString m_nombres;
+    QString m_apellidos;
     QString m_cedula;
     QString m_direccion;
     QString m_ciudad;

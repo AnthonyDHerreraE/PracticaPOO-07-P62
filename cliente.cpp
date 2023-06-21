@@ -171,3 +171,23 @@ void Cliente::reset()
     setTelefono("");
     setCorreo("");
 }
+
+QString Cliente::apellidos() const
+{
+    return m_apellidos;
+}
+
+void Cliente::setApellidos(const QString &newApellidos)
+{
+    m_apellidos = newApellidos;
+}
+
+QString Cliente::nombres() const
+{
+    return m_nombres;
+}
+
+void Cliente::setNombres(const QString &newNombres)
+{
+    m_nombres = newNombres;
+}

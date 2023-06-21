@@ -11,14 +11,17 @@ CONFIG += c++17
 SOURCES += \
     cliente.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    txtsave.cpp
 
 HEADERS += \
     cliente.h \
-    mainwindow.h
+    mainwindow.h \
+    txtsave.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    txtsave.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
