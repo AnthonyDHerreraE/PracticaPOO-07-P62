@@ -2,6 +2,7 @@
 #define ARCHIVO_H
 
 #include <QObject>
+#include <QThread>
 #include <QFile>
 #include <QMessageBox>
 #include <QDir>
@@ -24,8 +25,8 @@ private:
     QStringList m_lista;
     QList<Cliente*> m_clientes;
     void leerArchivo();
-    QFile nombreArchivo;
-    QTextStream io;
+    void guardarArchivo();
+
 };
 
 #endif // ARCHIVO_H

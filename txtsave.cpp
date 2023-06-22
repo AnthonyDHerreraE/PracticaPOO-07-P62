@@ -52,6 +52,7 @@ void TxtSave::setClientes(const QList<Cliente *> &newClientes)
 void TxtSave::setLista(const QStringList &newLista)
 {
     m_lista = newLista;
+    //ui->listWidget->addItems(lista());
 }
 
 

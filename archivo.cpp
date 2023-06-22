@@ -2,15 +2,16 @@
 
 Archivo::Archivo()
 {
+
     leerArchivo();
 }
 
-
-
 void Archivo::leerArchivo()
 {
-    nombreArchivo.setFileName(":/Clientes.csv");
-    nombreArchivo.open(QIODevice::Text | QIODevice::ReadWrite);
+    QFile nombreArchivo;
+    QTextStream io;
+    nombreArchivo.setFileName("Clientes.csv");
+    nombreArchivo.open(QIODevice::Text | QIODevice::ReadOnly);
     if(!nombreArchivo.isOpen()){
         QMessageBox::critical(0,tr("Error"),nombreArchivo.errorString());
         return;
@@ -32,34 +33,43 @@ void Archivo::leerArchivo()
         m_clientes.push_back(actual);
         m_lista.push_back(actual->nombre());
 
-        /*nombreArchivo.flush();
+    }
+        nombreArchivo.flush();
         nombreArchivo.close();
-*/
-}
+
+
 }
 
-void Archivo::guardarCliente(Cliente &dato)
+void Archivo::guardarArchivo()
 {
-    //nombreArchivo.setFileName(":/uno.csv");
-    if(nombreArchivo.isOpen()){
-            qDebug()<<"Error...!"<<"ok\n";
-           // return;
-        }else{
-        qDebug()<<"Error...!"<<"nook\n";
-    }
-    nombreArchivo.flush();
-    nombreArchivo.close();
-    //nombreArchivo.open(QIODevice::Text | QIODevice::WriteOnly);
+    QFile nombreArchivo;
+    QTextStream io;
+    nombreArchivo.setFileName("Clientes.csv");
+    nombreArchivo.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     if(!nombreArchivo.isOpen()){
         qDebug()<<"Error...!"<<nombreArchivo.errorString()<<"\n";
         return;
     }
     io.setDevice(&nombreArchivo);
 
-    io<<dato.nombres()<<";"<<dato.apellidos()<<";"<<dato.cedula()<<";"<<dato.direccion()<<";"<<dato.ciudad()<<";"<<dato.telefono()<<";"<<dato.correo()<<"\n";
+    foreach (Cliente *actual,m_clientes) {
+        io<<actual->nombres()<<";"
+        <<actual->apellidos()<<";"
+        <<actual->cedula()<<";"
+        <<actual->direccion()<<";"
+        <<actual->ciudad()<<";"
+        <<actual->telefono()<<";"
+        <<actual->correo()<<"\n";
+    }
 
     nombreArchivo.flush();
     nombreArchivo.close();
+}
+
+void Archivo::guardarCliente(Cliente &dato)
+{
+    m_clientes.push_back(&dato);
+    guardarArchivo();
 }
 
 
