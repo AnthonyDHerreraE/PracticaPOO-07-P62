@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "cliente.h"
 #include "txtsave.h"
+#include "archivo.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,6 +35,6 @@ signals:
 private:
     Ui::MainWindow *ui;
     Cliente m_cliente;
-    TxtSave *m_archivo = new TxtSave();
+    Archivo m_datos;
 };
 #endif // MAINWINDOW_H

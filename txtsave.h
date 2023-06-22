@@ -2,10 +2,7 @@
 #define TXTSAVE_H
 
 #include <QWidget>
-#include <QMessageBox>
-#include <QDir>
-#include <QDebug>
-#include "cliente.h"
+#include "archivo.h"
 
 namespace Ui {
 class TxtSave;
@@ -19,6 +16,16 @@ public:
     explicit TxtSave(QWidget *parent = nullptr);
     ~TxtSave();
 
+    void setLista(const QStringList &newLista);
+
+    void setClientes(const QList<Cliente *> &newClientes);
+
+    const QStringList &lista() const;
+
+    const QList<Cliente *> &clientes() const;
+
+    void setDatos(Archivo &newDatos);
+
 private slots:
     void on_lineEdit_textChanged(const QString &arg1);
 
@@ -28,10 +35,8 @@ private:
     Ui::TxtSave *ui;
     QStringList m_lista;
     QList<Cliente*> m_clientes;
-    void leerArchivo();
-    friend class MainWindow;
-    QFile nombreArchivo;
-    QTextStream io;
+
+    Archivo *m_datos;
 };
 
 #endif // TXTSAVE_H

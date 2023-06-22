@@ -41,17 +41,7 @@ void MainWindow::on_btnEntrada_clicked()
 
 void MainWindow::on_btnTerminar_clicked()
 {
-    QString ruta = ":/Clientes.csv";
-    m_archivo->nombreArchivo.setFileName(ruta);
-    m_archivo->nombreArchivo.open(QIODevice::Text | QIODevice::WriteOnly);
-    if(!m_archivo->nombreArchivo.isOpen()){
-        qDebug()<<"Error...!"<<m_archivo->nombreArchivo.errorString()<<"\n";
-        return;
-    }
-    m_archivo->io.setDevice(&m_archivo->nombreArchivo);
-    m_archivo->io<<m_cliente.nombres()<<";"<<m_cliente.apellidos()<<";"<<m_cliente.cedula()<<";"<<m_cliente.direccion()<<";"<<m_cliente.ciudad()<<";"<<m_cliente.telefono()<<";"<<m_cliente.correo()<<"\n";
-
-    m_archivo->nombreArchivo.close();
+    m_datos.guardarCliente(m_cliente);
     //borra todo
     m_cliente.reset();
     ui->txtEntrada->clear();
@@ -67,6 +57,8 @@ void MainWindow::on_btnTerminar_clicked()
 
 void MainWindow::on_btnLista_clicked()
 {
+    TxtSave *m_archivo = new TxtSave();
+    m_archivo->setDatos(m_datos);
     m_archivo->setWindowModality(Qt::ApplicationModal);
     m_archivo->show();
 }

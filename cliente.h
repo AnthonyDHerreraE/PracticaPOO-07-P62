@@ -8,7 +8,7 @@ class Cliente : public QObject
 {
     Q_OBJECT
 public:
-    explicit Cliente(QObject *parent = nullptr);
+    explicit Cliente(QObject* parent = nullptr);
 
     const QString &nombre() const;
     const QString &cedula() const;
