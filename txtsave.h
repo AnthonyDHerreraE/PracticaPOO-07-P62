@@ -3,8 +3,9 @@
 
 #include <QWidget>
 #include <QMessageBox>
-#include<QDir>
+#include <QDir>
 #include <QDebug>
+#include "cliente.h"
 
 namespace Ui {
 class TxtSave;
@@ -26,6 +27,11 @@ private slots:
 private:
     Ui::TxtSave *ui;
     QStringList m_lista;
+    QList<Cliente*> m_clientes;
+    void leerArchivo();
+    friend class MainWindow;
+    QFile nombreArchivo;
+    QTextStream io;
 };
 
 #endif // TXTSAVE_H

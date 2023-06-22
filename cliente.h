@@ -2,6 +2,7 @@
 #define CLIENTE_H
 
 #include <QObject>
+#include <QDebug>
 
 class Cliente : public QObject
 {

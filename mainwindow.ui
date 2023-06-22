@@ -50,7 +50,7 @@
      <string>Telefono:</string>
     </property>
    </widget>
-   <widget class="QLabel" name="lblTNombre">
+   <widget class="QLabel" name="lblTNombres">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -178,7 +178,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtNombre">
+   <widget class="QLineEdit" name="txtNombres">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -188,7 +188,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLabel" name="lblTNombre_2">
+   <widget class="QLabel" name="lblTApellidos">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -201,7 +201,7 @@
      <string>Apellidos:</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="txtNombre_2">
+   <widget class="QLineEdit" name="txtApellidos">
     <property name="geometry">
      <rect>
       <x>380</x>
@@ -230,7 +230,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnLista">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -243,6 +243,19 @@
      <string>Lista de clientes</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lblguardado">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>350</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -250,7 +263,7 @@
      <x>0</x>
      <y>0</y>
      <width>678</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>

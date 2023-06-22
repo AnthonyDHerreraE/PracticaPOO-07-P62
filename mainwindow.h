@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "cliente.h"
+#include "txtsave.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -21,11 +22,18 @@ private slots:
 
     void on_btnTerminar_clicked();
 
+    void on_btnLista_clicked();
+
+
+
+    void on_txtEntrada_textChanged();
+
 signals:
 
 
 private:
     Ui::MainWindow *ui;
     Cliente m_cliente;
+    TxtSave *m_archivo = new TxtSave();
 };
 #endif // MAINWINDOW_H

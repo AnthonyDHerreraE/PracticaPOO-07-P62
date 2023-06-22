@@ -6,6 +6,7 @@ TxtSave::TxtSave(QWidget *parent) :
     ui(new Ui::TxtSave)
 {
     ui->setupUi(this);
+    leerArchivo();
 }
 
 TxtSave::~TxtSave()
@@ -25,5 +26,34 @@ void TxtSave::on_lineEdit_textChanged(const QString &arg1)
 void TxtSave::on_listWidget_currentTextChanged(const QString &currentText)
 {
     QMessageBox::information(0,"Aviso",currentText);//ui->listWidget->currentItem()->text());
+}
+
+void TxtSave::leerArchivo()
+{
+    nombreArchivo.setFileName(":/Clientes.csv");
+    nombreArchivo.open(QIODevice::Text | QIODevice::ReadOnly);
+    if(!nombreArchivo.isOpen()){
+        QMessageBox::critical(0,tr("Error"),nombreArchivo.errorString());
+        return;
+    };
+    io.setDevice(&nombreArchivo);
+    while(!io.atEnd()){
+        QString datosLinea=io.readLine();
+        QStringList datos=datosLinea.split(";");
+
+        Cliente* actual = new Cliente();
+        actual->setNombre(datos[0]+" "+datos[1]);
+        actual->setCedula(datos[2]);
+        actual->setDireccion(datos[3]);
+        actual->setCiudad(datos[4]);
+        actual->setTelefono(datos[5]);
+        actual->setCorreo(datos[6]);
+
+        m_clientes.push_back(actual);
+        m_lista.push_back(actual->nombre());
+
+        nombreArchivo.flush();
+        nombreArchivo.close();
+    }
 }
 

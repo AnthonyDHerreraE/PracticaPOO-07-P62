@@ -14,6 +14,17 @@ const QString &Cliente::nombre() const
 void Cliente::setNombre(const QString &newNombre)
 {
     m_nombre = newNombre;
+    QStringList nombreCompleto = newNombre.split(" ");
+    for(int i=0;i<2;i++){
+        m_nombres += nombreCompleto.front() + " ";
+        nombreCompleto.pop_front();
+    }
+    while(!nombreCompleto.isEmpty()){
+        m_apellidos += nombreCompleto.front() + " ";
+        nombreCompleto.pop_front();
+    }
+    m_nombres=m_nombres.trimmed();
+    m_apellidos=m_apellidos.trimmed();
 }
 
 
@@ -180,6 +191,9 @@ QString Cliente::apellidos() const
 void Cliente::setApellidos(const QString &newApellidos)
 {
     m_apellidos = newApellidos;
+    if(!nombre().isEmpty())
+        setNombre(nombre()+apellidos());
+    qDebug() <<nombre();
 }
 
 QString Cliente::nombres() const
@@ -190,4 +204,7 @@ QString Cliente::nombres() const
 void Cliente::setNombres(const QString &newNombres)
 {
     m_nombres = newNombres;
+    if(!apellidos().isEmpty())
+        setNombre(nombre()+apellidos());
+    qDebug()<<nombre();
 }
