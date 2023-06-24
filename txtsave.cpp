@@ -15,7 +15,7 @@ TxtSave::~TxtSave()
 
 void TxtSave::on_lineEdit_textChanged(const QString &arg1)
 {
-    QRegularExpression regExp(arg1);
+    QRegularExpression regExp(arg1.toUpper());
     ui->listWidget->clear();
     ui->listWidget->addItems(lista().filter(regExp));
     ui->lblTotal->setText(QString("%1").arg(ui->listWidget->count()));

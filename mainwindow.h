@@ -25,9 +25,11 @@ private slots:
 
     void on_btnLista_clicked();
 
-
-
     void on_txtEntrada_textChanged();
+
+
+
+    void on_btnCancelar_clicked();
 
 signals:
 

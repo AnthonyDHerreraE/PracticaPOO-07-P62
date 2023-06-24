@@ -21,12 +21,16 @@ public:
 
     const QStringList &lista();
 
+    Cliente *actual() const;
+
+
 private:
     QStringList m_lista;
     QList<Cliente*> m_clientes;
-    void leerArchivo();
-    void guardarArchivo();
-
+    Cliente *m_actual;
+    void leerArchivoCSV();
+    void guardarArchivoCSV();
+    void setActual(Cliente *newActual);
 };
 
 #endif // ARCHIVO_H

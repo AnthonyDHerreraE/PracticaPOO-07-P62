@@ -15,11 +15,13 @@ void Cliente::setNombre(const QString &newNombre)
 {
     m_nombre = newNombre;
     QStringList nombreCompleto = newNombre.split(" ");
-    for(int i=0;i<2;i++){
-        m_nombres += nombreCompleto.front() + " ";
-        nombreCompleto.pop_front();
-    }
     while(!nombreCompleto.isEmpty()){
+        if(nombreCompleto.size()>2){
+            for (int i=0;i<2;i++){
+                m_nombres += nombreCompleto.front() + " ";
+                nombreCompleto.pop_front();
+            }
+        }
         m_apellidos += nombreCompleto.front() + " ";
         nombreCompleto.pop_front();
     }
@@ -94,7 +96,6 @@ void Cliente::inDatos(QString &entradaDatos)
         aux.clear();
         }
     }
-    aux.~QStringList();
 
 
     while(!datos.empty()){
@@ -127,6 +128,7 @@ void Cliente::inDatos(QString &entradaDatos)
             datos.pop_front();
         }
     }
+    m_formato();
 }
 
 int Cliente::filtro(QString &dato)
@@ -176,11 +178,25 @@ int Cliente::filtro(QString &dato)
 void Cliente::reset()
 {
     setNombre("");
+    setNombres("");
+    setApellidos("");
     setCedula("");
     setDireccion("");
     setCiudad("");
     setTelefono("");
     setCorreo("");
+}
+
+void Cliente::m_formato()
+{
+    QString aux = nombre().toUpper();
+    setNombre("");
+    setNombres("");
+    setApellidos("");
+    setNombre(aux);
+    setDireccion(direccion().toUpper());
+    setCiudad(ciudad().toUpper());
+    setCorreo(correo().toLower());
 }
 
 QString Cliente::apellidos() const
@@ -192,7 +208,7 @@ void Cliente::setApellidos(const QString &newApellidos)
 {
     m_apellidos = newApellidos;
     if(!nombre().isEmpty())
-        setNombre(nombre()+apellidos());
+        setNombre(nombres()+apellidos());
     qDebug() <<nombre();
 }
 
@@ -205,6 +221,6 @@ void Cliente::setNombres(const QString &newNombres)
 {
     m_nombres = newNombres;
     if(!apellidos().isEmpty())
-        setNombre(nombre()+apellidos());
+        setNombre(nombres()+apellidos());
     qDebug()<<nombre();
 }

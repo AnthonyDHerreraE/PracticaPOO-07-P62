@@ -47,6 +47,7 @@ private:
     QString m_ciudad;
     QString m_telefono;
     QString m_correo;
+    void m_formato();
 };
 
 #endif // CLIENTE_H

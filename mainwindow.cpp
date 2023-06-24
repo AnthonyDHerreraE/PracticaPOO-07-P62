@@ -19,6 +19,7 @@ void MainWindow::on_btnEntrada_clicked()
     //entrada
     QString entrada = ui->txtEntrada->toPlainText();
 
+    m_cliente.reset();
     m_cliente.inDatos(entrada);
 
     //salida
@@ -41,9 +42,19 @@ void MainWindow::on_btnEntrada_clicked()
 
 void MainWindow::on_btnTerminar_clicked()
 {
-    m_datos.guardarCliente(m_cliente);
-    //borra todo
     m_cliente.reset();
+
+    m_cliente.setNombres(ui->txtNombres->text());
+    m_cliente.setApellidos(ui->txtApellidos->text());
+    m_cliente.setCedula(ui->txtCedula->text());
+    m_cliente.setDireccion(ui->txtDireccion->text());
+    m_cliente.setCiudad(ui->txtCiudad->text());
+    m_cliente.setTelefono(ui->txtTelefono->text());
+    m_cliente.setCorreo(ui->txtCorreo->text());
+
+    m_datos.guardarCliente(m_cliente);
+
+    //borra todo
     ui->txtEntrada->clear();
     ui->txtNombres->clear();
     ui->txtApellidos->clear();
@@ -67,5 +78,23 @@ void MainWindow::on_btnLista_clicked()
 void MainWindow::on_txtEntrada_textChanged()
 {
     ui->lblguardado->setText("");
+}
+
+
+
+
+
+void MainWindow::on_btnCancelar_clicked()
+{
+    m_cliente.reset();
+    ui->txtEntrada->clear();
+    ui->txtNombres->clear();
+    ui->txtApellidos->clear();
+    ui->txtCedula->clear();
+    ui->txtDireccion->clear();
+    ui->txtCiudad->clear();
+    ui->txtTelefono->clear();
+    ui->txtCorreo->clear();
+    ui->lblguardado->setText("Cancelado");
 }
 
