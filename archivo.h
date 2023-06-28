@@ -25,9 +25,12 @@ public:
 
 
 private:
+    QString ruta = "Clientes.csv";
     QStringList m_lista;
     QList<Cliente*> m_clientes;
     Cliente *m_actual;
+    void leerArchivoBIN();
+    void guardarArchivoBIN();
     void leerArchivoCSV();
     void guardarArchivoCSV();
     void setActual(Cliente *newActual);

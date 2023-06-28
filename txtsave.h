@@ -29,7 +29,7 @@ public:
 private slots:
     void on_lineEdit_textChanged(const QString &arg1);
 
-    void on_listWidget_currentTextChanged(const QString &currentText);
+    void on_lstClientes_currentTextChanged(const QString &currentText);
 
 private:
     Ui::TxtSave *ui;

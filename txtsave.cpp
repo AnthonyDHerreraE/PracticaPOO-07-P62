@@ -16,15 +16,9 @@ TxtSave::~TxtSave()
 void TxtSave::on_lineEdit_textChanged(const QString &arg1)
 {
     QRegularExpression regExp(arg1.toUpper());
-    ui->listWidget->clear();
-    ui->listWidget->addItems(lista().filter(regExp));
-    ui->lblTotal->setText(QString("%1").arg(ui->listWidget->count()));
-}
-
-
-void TxtSave::on_listWidget_currentTextChanged(const QString &currentText)
-{
-    QMessageBox::information(0,"Aviso",currentText);//ui->listWidget->currentItem()->text());
+    ui->lstClientes->clear();
+    ui->lstClientes->addItems(lista().filter(regExp));
+    ui->lblTotal->setText(QString("%1").arg(ui->lstClientes->count()));
 }
 
 void TxtSave::setDatos(Archivo &newDatos)
@@ -32,6 +26,10 @@ void TxtSave::setDatos(Archivo &newDatos)
     m_datos = &newDatos;
     setLista(m_datos->lista());
     setClientes(m_datos->clientes());
+
+    ui->lstClientes->clear();
+    ui->lstClientes->addItems(lista());
+    ui->lblTotal->setText(QString("%1").arg(ui->lstClientes->count()));
 }
 
 const QList<Cliente *> &TxtSave::clientes() const
@@ -56,4 +54,18 @@ void TxtSave::setLista(const QStringList &newLista)
 }
 
 
+void TxtSave::on_lstClientes_currentTextChanged(const QString &currentText)
+{
+    foreach (Cliente *actual,m_clientes) {
+        if(actual->nombre()==currentText){
+            ui->lblNombres->setText(actual->nombres());
+            ui->lblApellidos->setText(actual->apellidos());
+            ui->lblCedula->setText(actual->cedula());
+            ui->lblDireccion->setText(actual->direccion());
+            ui->lblCiudad->setText(actual->ciudad());
+            ui->lblTelefono->setText(actual->telefono());
+            ui->lblCorreo->setText(actual->correo());
+        }
+    }
+}
 

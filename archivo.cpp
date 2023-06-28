@@ -12,7 +12,7 @@ void Archivo::leerArchivoCSV()
     m_lista.clear();
     QFile nombreArchivo;
     QTextStream io;
-    nombreArchivo.setFileName("Clientes.csv");
+    nombreArchivo.setFileName(ruta);
     nombreArchivo.open(QIODevice::Text | QIODevice::ReadOnly);
     if(!nombreArchivo.isOpen()){
         qDebug()<<"Error...!"<<nombreArchivo.errorString()<<"\n";
@@ -46,7 +46,7 @@ void Archivo::guardarArchivoCSV()
 {
     QFile nombreArchivo;
     QTextStream io;
-    nombreArchivo.setFileName("Clientes.csv");
+    nombreArchivo.setFileName(ruta);
     nombreArchivo.open(QIODevice::Text | QIODevice::WriteOnly | QIODevice::Append);
     if(!nombreArchivo.isOpen()){
         QMessageBox::critical(0,tr("Error"),nombreArchivo.errorString());
@@ -97,3 +97,51 @@ void Archivo::setActual(Cliente *newActual)
     m_actual = newActual;
 }
 
+void Archivo::leerArchivoBIN()
+{
+    m_clientes.clear();
+    m_lista.clear();
+    QFile nombreArchivo;
+    QDataStream io;
+    nombreArchivo.setFileName("Clientes.dat");
+    nombreArchivo.open(QIODevice::ReadOnly);
+    if(!nombreArchivo.isOpen()){
+        qDebug()<<"Error...!"<<nombreArchivo.errorString()<<"\n";
+        return;
+    };
+    io.setDevice(&nombreArchivo);
+
+    while (!io.atEnd()) {
+        QString aux;
+
+        io >> aux;
+
+        m_lista.push_back(aux);
+    }
+
+    nombreArchivo.flush();
+    nombreArchivo.close();
+}
+
+void Archivo::guardarArchivoBIN()
+{
+    QFile reset("Clientes.dat");
+    reset.moveToTrash();
+    QFile nombreArchivo;
+    QDataStream io;
+    nombreArchivo.setFileName("Clientes.dat");
+    nombreArchivo.open(QIODevice::WriteOnly);
+    if(!nombreArchivo.isOpen()){
+        QMessageBox::critical(0,tr("Error"),nombreArchivo.errorString());
+        return;
+    }
+    io.setDevice(&nombreArchivo);
+
+    foreach (QString aux,m_lista) {
+        io << aux;
+    }
+
+    nombreArchivo.flush();
+    nombreArchivo.close();
+    leerArchivoBIN();
+}

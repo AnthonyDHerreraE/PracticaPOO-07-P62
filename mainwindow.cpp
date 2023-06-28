@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QPixmap>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,6 +19,9 @@ void MainWindow::on_btnEntrada_clicked()
 {
     //entrada
     QString entrada = ui->txtEntrada->toPlainText();
+
+    if(entrada.isEmpty())
+        return;
 
     m_cliente.reset();
     m_cliente.inDatos(entrada);
@@ -42,6 +46,18 @@ void MainWindow::on_btnEntrada_clicked()
 
 void MainWindow::on_btnTerminar_clicked()
 {
+    //si cualquier dato falta no se puede guardar
+    if(
+            ui->txtNombres->text().isEmpty()||
+            ui->txtApellidos->text().isEmpty()||
+            ui->txtCedula->text().isEmpty()||
+            ui->txtDireccion->text().isEmpty()||
+            ui->txtCiudad->text().isEmpty()||
+            ui->txtTelefono->text().isEmpty()||
+            ui->txtCorreo->text().isEmpty()
+            )
+        return;
+
     m_cliente.reset();
 
     m_cliente.setNombres(ui->txtNombres->text());
